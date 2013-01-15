@@ -28,9 +28,9 @@ abstract class Kohana_SSO_Driver_OpenID extends SSO_Driver {
 		return array(
 			'service_id'    => $this->_identity,
 			'service_name'  => $this->_identity,
-			'realname'      => arr::get($user, 'namePerson/friendly', NULL),
+			'realname'      => Arr::get($user, 'namePerson/friendly'),
 			'service_type'  => $this->name,
-			'email'         => arr::get($user, 'contact/email', NULL),
+			'email'         => Arr::get($user, 'contact/email'),
 		);
 	}
 
@@ -38,17 +38,23 @@ abstract class Kohana_SSO_Driver_OpenID extends SSO_Driver {
 
 	public function init()
 	{
-		$this->_openid = OpenID::factory();
+		$provider = $this->name == 'openid' ? NULL : str_replace('openid.', '', $this->name);
+		$this->_openid = OpenID::factory($provider);
 	}
 
 	public function login()
 	{
-		// some providers like Google dont need accountID
-		$id = func_num_args() > 0 ? func_get_arg(0) : NULL;
+		$this->_openid = func_get_arg(0);
+		if ( ! is_object($this->_openid))
+		{
+			return FALSE;
+		}
+
+		$id = $this->_openid->identity();
 		$this->_identity = $this->_get_identity($id);
 		if ($user = $this->get_user())
 		{
-			Cookie::set($this->_identity_key, $this->_identity);// ?
+			Cookie::set($this->_identity_key, $this->_identity);
 			$this->complete_login();
 		}
 

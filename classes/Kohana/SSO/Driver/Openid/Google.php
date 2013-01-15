@@ -12,23 +12,9 @@ abstract class Kohana_SSO_Driver_OpenID_Google extends SSO_Driver_OpenID {
 		$result['service_name']   = current(explode('@', $result['email']));
 		if (empty($result['realname']))
 		{
-			$result['realname'] = trim(arr::get($result, 'namePerson/first').' '.arr::get($result, 'namePerson/last'));
+			$result['realname'] = trim(Arr::get($result, 'namePerson/first') . ' ' . Arr::get($result, 'namePerson/last'));
 		}
 		return $result;
-	}
-
-
-	public function init()
-	{
-		parent::init();
-
-		// Google ignores optional parameters
-		$required = $this->_openid->required() + $this->_openid->optional() + array(
-			'namePerson/first',
-			'namePerson/last'
-		);
-
-		$this->_openid->required($required);
 	}
 
 }

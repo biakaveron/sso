@@ -34,7 +34,8 @@ abstract class Kohana_SSO_Driver_OAuth extends SSO_Driver {
 			'oauth_token' => $token->token,
 		));
 
-		$response = $request->sign($this->_provider->signature, $consumer, $token)->execute();
+		$response = $request->sign($this->_provider->signature, $consumer, $token)
+		                    ->execute(array(CURLOPT_FOLLOWLOCATION => TRUE));
 		return $this->_get_user_data($response);
 	}
 
