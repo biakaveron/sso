@@ -2,10 +2,9 @@
 
 abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 
-
 	/**
 	 * @param  mixed  $data  user data (Array) or user ID (int) or ORM object
-	 * @return Model_User
+	 * @return Model_Auth_Data
 	 */
 	public function get_user($data)
 	{
@@ -40,20 +39,20 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 	}
 
 	/**
-	 * @param $token
+	 * @param  $token
 	 *
 	 * @return  Model_Token|bool
 	 */
 	public function get_token($token)
 	{
-		$token = $this->_load_token($token);
+		$token = ORM::factory('sso_token')->where('token', '=', $token)->find();
 		if ($token->is_valid())
 		{
 			return $token;
 		}
 		else
 		{
-			$this->_delete_token($token);
+			$this->delete_token($token);
 			return FALSE;
 		}
 	}
@@ -95,7 +94,8 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 			->set('service_type', $data['service_type'])
 			->set('service_name', $data['service_name'])
 			->set('email', $data['email'])
-			->set('avatar', Arr::get($data, 'avatar'));
+			->set('avatar', Arr::get($data, 'avatar'))
+			->set('is_active', (bool)Kohana::$config->load('sso.active_user'));
 		$auth_data->save();
 
 		return $auth_data;

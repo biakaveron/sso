@@ -53,26 +53,10 @@ abstract class Kohana_SSO {
 	}
 
 	/**
-	 * @param $refresh bool  reload user data from DB
-	 *
-	 * @return  bool | Model_User
-	 */
-	public function get_user($refresh = FALSE)
-	{
-		$authdata = $this->get_authdata($refresh);
-		if ( ! $authdata)
-		{
-			return FALSE;
-		}
-
-		return $authdata->user;
-	}
-
-	/**
 	 * @param bool $refresh reload user data from DB
 	 * @return  FALSE|Model_Auth_Data
 	 */
-	public function get_authdata($refresh = FALSE)
+	public function get_user($refresh = FALSE)
 	{
 		$driver = $this->_session->get($this->_driver_key);
 		if ( ! $driver AND $this->_session->get($this->_forced_key) !== TRUE )
@@ -98,7 +82,8 @@ abstract class Kohana_SSO {
 	 * This method can use different param types and count depends on driver.
 	 *
 	 *      // try to log in via OAuth v2 as Github user (access token required)
-	 *      SSO::instance()->login('oauth2.github', $token, TRUE);
+	 *      SSO::instance()->login('oauth2.github', $token);
+	 *
 	 *
 	 * @throws SSO_Exception
 	 * @return  boolean
@@ -120,7 +105,7 @@ abstract class Kohana_SSO {
 		{
 			$this->_complete_login($user, $driver_name);
 			// check for autologin option
-			$remember = (bool)arr::get($params, 1, FALSE);
+			$remember = $this->_config['lifetime'] > 0;
 			if ($remember)
 			{
 				$token = $this->orm()->generate_token($user, $driver_name, $this->_config['lifetime']);
@@ -178,6 +163,11 @@ abstract class Kohana_SSO {
 			$token->generate($this->_config['lifetime']);
 			Cookie::set($this->_autologin_key, $token->token);
 			return $token->user;
+		}
+		else
+		{
+			// delete cookie
+			Cookie::delete($this->_autologin_key);
 		}
 
 		return FALSE;
