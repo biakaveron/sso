@@ -4,7 +4,7 @@ abstract class Kohana_SSO_Driver_OAuth_Google extends SSO_Driver_OAuth {
 
 	protected $_provider = 'google';
 
-	protected function _url_verify_credentials()
+	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
 		return 'http://www-opensocial.googleusercontent.com/api/people/@me/@self';
 	}

@@ -4,7 +4,7 @@ abstract class Kohana_SSO_Driver_OAuth_LinkedIn extends SSO_Driver_OAuth {
 
 	protected $_provider = 'linkedin';
 
-	protected function _url_verify_credentials()
+	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
 		// @link https://developer.linkedin.com/documents/profile-fields
 		return 'https://api.linkedin.com/v1/people/~:(id,first-name,last-name,date-of-birth,picture-url)';

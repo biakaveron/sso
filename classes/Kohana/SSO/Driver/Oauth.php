@@ -7,11 +7,7 @@
 abstract class Kohana_SSO_Driver_OAuth extends SSO_Driver {
 
 	/**
-	 * @var OAuth_v1
-	 */
-	//protected $_oauth;
-	/**
-	 * @var OAuth_v1_Provider
+	 * @var OAuth_Provider
 	 */
 	protected $_provider;
 	/**
@@ -19,17 +15,17 @@ abstract class Kohana_SSO_Driver_OAuth extends SSO_Driver {
 	 */
 	protected $_consumer;
 	/**
-	 * @var Auth_v1_Token_Access
+	 * @var OAuth_Token_Access
 	 */
 	protected $_token;
 	protected $_token_key = 'auth_oauth_token';
 
 	abstract protected function _get_user_data($user);
-	abstract protected function _url_verify_credentials();
+	abstract protected function _url_verify_credentials(OAuth_Token_Access $token);
 
 	protected function _verify_credentials(OAuth_Token $token, OAuth_Consumer $consumer)
 	{
-		$request = OAuth_Request::factory('credentials', 'GET', $this->_url_verify_credentials(), array(
+		$request = OAuth_Request::factory('credentials', 'GET', $this->_url_verify_credentials($token), array(
 			'oauth_consumer_key' => $consumer->key,
 			'oauth_token' => $token->token,
 		));

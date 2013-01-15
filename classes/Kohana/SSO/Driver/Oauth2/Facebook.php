@@ -28,7 +28,7 @@ abstract class Kohana_SSO_Driver_OAuth2_Facebook extends SSO_Driver_OAuth2 {
 		);
 	}
 
-	protected function _url_verify_credentials()
+	protected function _url_verify_credentials(OAuth2_Token_Access $token)
 	{
 		return 'https://graph.facebook.com/me';
 	}

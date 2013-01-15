@@ -22,7 +22,7 @@ abstract class Kohana_SSO_Driver_Oauth2_Google extends SSO_Driver_OAuth2 {
 		);
 	}
 
-	protected function _url_verify_credentials()
+	protected function _url_verify_credentials(OAuth2_Token_Access $token)
 	{
 		return 'https://www.googleapis.com/oauth2/v1/userinfo';
 	}

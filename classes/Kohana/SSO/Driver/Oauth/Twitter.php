@@ -4,7 +4,7 @@ abstract class Kohana_SSO_Driver_OAuth_Twitter extends SSO_Driver_OAuth {
 
 	protected $_provider = 'twitter';
 
-	protected function _url_verify_credentials()
+	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
 		return 'http://api.twitter.com/1/account/verify_credentials.json';
 	}
