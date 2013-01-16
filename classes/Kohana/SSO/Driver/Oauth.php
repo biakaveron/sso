@@ -25,7 +25,7 @@ abstract class Kohana_SSO_Driver_OAuth extends SSO_Driver {
 
 	protected function _verify_credentials(OAuth_Token $token, OAuth_Consumer $consumer)
 	{
-		$request = OAuth_Request::factory('credentials', 'GET', $this->_url_verify_credentials($token), array(
+		$request = OAuth_Request::factory('Credentials', 'GET', $this->_url_verify_credentials($token), array(
 			'oauth_consumer_key' => $consumer->key,
 			'oauth_token' => $token->token,
 		));
