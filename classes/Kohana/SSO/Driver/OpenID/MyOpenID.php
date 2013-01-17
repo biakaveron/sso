@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OpenID_MyOpenID extends SSO_Driver_OpenID {
 
-	public $name = 'openid.myopenid';
+	public $name = 'OpenID.MyOpenID';
 
 	protected function _get_user_data($user)
 	{

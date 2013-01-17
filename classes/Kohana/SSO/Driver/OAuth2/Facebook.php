@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OAuth2_Facebook extends SSO_Driver_OAuth2 {
 
-	protected $_provider = 'facebook';
+	protected $_provider = 'Facebook';
 
 	/**
 	 * @param   string  $user object (response from provider)
@@ -21,7 +21,7 @@ abstract class Kohana_SSO_Driver_OAuth2_Facebook extends SSO_Driver_OAuth2 {
 			'service_id'    => $user->id,
 			'service_name'  => $user->nickname,
 			'realname'      => $user->name,
-			'service_type'  => 'oauth2.facebook',
+			'service_type'  => 'OAuth2.Facebook',
 			'email'         => $user->email,
 			// @see http://developers.facebook.com/docs/reference/api/#pictures
 			'avatar'        => 'https://graph.facebook.com/' . $user->id . '/picture?type=normal',

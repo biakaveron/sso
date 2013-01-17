@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OAuth2_Vk extends SSO_Driver_OAuth2 {
 
-	protected $_provider = 'vk';
+	protected $_provider = 'Vk';
 
 	/**
 	 * @param   string  $user object (response from provider)
@@ -19,7 +19,7 @@ abstract class Kohana_SSO_Driver_OAuth2_Vk extends SSO_Driver_OAuth2 {
 			'service_id'    => $user->uid,
 			'service_name'  => $displayname,
 			'realname'      => $login,
-			'service_type'  => 'oauth2.vk',
+			'service_type'  => 'OAuth2.Vk',
 			'email'         => NULL,
 			'photo'         => $user->photo,
 		);

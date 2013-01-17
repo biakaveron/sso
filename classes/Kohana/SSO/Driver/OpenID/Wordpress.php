@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OpenID_Wordpress extends SSO_Driver_OpenID {
 
-	public $name = 'openid.wordpress';
+	public $name = 'OpenID.Wordpress';
 
 	protected function _get_user_data($user)
 	{

@@ -17,12 +17,12 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 		if ( ! is_array($data) )
 		{
 			// find by unique key
-			$user = ORM::factory('auth_data', $data);
+			$user = ORM::factory('Auth_Data', $data);
 		}
 		else
 		{
 			// get user by service identity
-			$user = ORM::factory('auth_data')
+			$user = ORM::factory('Auth_Data')
 				->where('service_id', '=', $data['service_id'])
 				->where('service_type', '=', $data['service_type'])
 				->find();
@@ -45,7 +45,7 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 	 */
 	public function get_token($token)
 	{
-		$token = ORM::factory('sso_token')->where('token', '=', $token)->find();
+		$token = ORM::factory('SSO_Token')->where('token', '=', $token)->find();
 		if ($token->is_valid())
 		{
 			return $token;
@@ -59,7 +59,7 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 
 	public function generate_token($user, $driver, $lifetime = NULL)
 	{
-		$token = ORM::factory('token');
+		$token = ORM::factory('Token');
 		$token->generate($lifetime);
 		$token->user = $user;
 		$token->driver = $driver;
@@ -76,7 +76,7 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 
 		if ( ! is_object($token))
 		{
-			$token = ORM::factory('token')->where('token', '=', $token)->find();
+			$token = ORM::factory('Token')->where('token', '=', $token)->find();
 		}
 
 		if ($token->loaded())
@@ -89,7 +89,7 @@ abstract class Kohana_SSO_ORM implements Interface_SSO_ORM {
 
 	protected function _save_user(array $data)
 	{
-		$auth_data = ORM::factory('auth_data')
+		$auth_data = ORM::factory('Auth_Data')
 			->set('service_id', $data['service_id'])
 			->set('service_type', $data['service_type'])
 			->set('service_name', $data['service_name'])

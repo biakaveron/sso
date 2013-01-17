@@ -206,10 +206,10 @@ abstract class Kohana_SSO {
 			throw new SSO_Exception('SSO driver name required');
 		}
 		// OAuth.Google will be a OAuth_Google driver
-		$name = str_replace('.', '_', ucwords($name));
+		$name = str_replace('.', '_', $name);
 		if ( ! isset($this->_drivers[$name]))
 		{
-			$class = 'SSO_Driver_'.ucwords($name);
+			$class = 'SSO_Driver_'.$name;
 			$driver = new $class($this);
 			$driver->init();
 			$this->_drivers[$name] = $driver;

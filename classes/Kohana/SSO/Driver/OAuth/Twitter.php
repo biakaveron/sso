@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OAuth_Twitter extends SSO_Driver_OAuth {
 
-	protected $_provider = 'twitter';
+	protected $_provider = 'Twitter';
 
 	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
@@ -22,7 +22,7 @@ abstract class Kohana_SSO_Driver_OAuth_Twitter extends SSO_Driver_OAuth {
 			'service_id'    => $user->id,
 			'service_name'  => $user->screen_name,
 			'realname'      => $user->name,
-			'service_type'  => 'oauth.twitter',
+			'service_type'  => 'OAuth.Twitter',
 			'email'         => NULL,
 			'avatar'        => $user->profile_image_url,
 		);

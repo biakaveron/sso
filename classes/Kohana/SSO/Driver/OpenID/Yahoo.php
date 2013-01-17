@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OpenID_Yahoo extends SSO_Driver_OpenID {
 
-	public $name = 'openid.yahoo';
+	public $name = 'OpenID.Yahoo';
 
 	protected function _get_user_data($user)
 	{

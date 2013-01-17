@@ -2,7 +2,7 @@
 
 class Kohana_SSO_Driver_OAuth2_Yandex extends SSO_Driver_OAuth2 {
 
-	protected $_provider = 'yandex';
+	protected $_provider = 'Yandex';
 
 	/**
 	 * @param   string  $user object (response from provider)
@@ -24,7 +24,7 @@ class Kohana_SSO_Driver_OAuth2_Yandex extends SSO_Driver_OAuth2 {
 			'service_id'    => $user->id,
 			'service_name'  => $user->name,
 			'realname'      => $user->name,
-			'service_type'  => 'oauth2.yandex',
+			'service_type'  => 'OAuth2.Yandex',
 			'email'         => $user->email,
 			'avatar'        => $avatar,
 		);

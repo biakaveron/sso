@@ -35,7 +35,7 @@ abstract class Kohana_SSO_Driver_OAuth extends SSO_Driver {
 		return $this->_get_user_data($response);
 	}
 
-	public $name = 'oauth';
+	public $name = 'OAuth';
 
 	public function init()
 	{

@@ -2,6 +2,6 @@
 
 abstract class Kohana_SSO_Driver_OpenID_Livejournal extends SSO_Driver_OpenID {
 
-	public $name = 'openid.livejournal';
+	public $name = 'OpenID.Livejournal';
 
 }

@@ -2,7 +2,7 @@
 
 class Kohana_SSO_Driver_OAuth2_Github extends SSO_Driver_OAuth2 {
 
-	protected $_provider = 'github';
+	protected $_provider = 'Github';
 
 	/**
 	 * @param   string  $user object (response from provider)
@@ -17,7 +17,7 @@ class Kohana_SSO_Driver_OAuth2_Github extends SSO_Driver_OAuth2 {
 			'service_id'    => $user['id'],
 			'service_name'  => $user['login'],
 			'realname'      => Arr::get($user, 'name'),
-			'service_type'  => 'oauth2.github',
+			'service_type'  => 'OAuth2.Github',
 			'email'         => Arr::get($user, 'email'),
 			// Github uses Gravatar for profile images
 			'avatar'        => $avatar,

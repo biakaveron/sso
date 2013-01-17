@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OAuth_Google extends SSO_Driver_OAuth {
 
-	protected $_provider = 'google';
+	protected $_provider = 'Google';
 
 	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
@@ -21,7 +21,7 @@ abstract class Kohana_SSO_Driver_OAuth_Google extends SSO_Driver_OAuth {
 			'service_id'    => $user->id,
 			'service_name'  => $user->displayName,
 			'realname'      => $user->displayName,
-			'service_type'  => 'oauth.google',
+			'service_type'  => 'OAuth.Google',
 			'email'         => isset($user->email) ? $user->email : NULL, // may be empty
 			'avatar'        => $user->thumbnailUrl ? $user->thumbnailUrl : '',
 		);

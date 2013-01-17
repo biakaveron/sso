@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OAuth_Yahoo extends SSO_Driver_OAuth {
 
-	protected $_provider = 'yahoo';
+	protected $_provider = 'Yahoo';
 
 	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
@@ -28,7 +28,7 @@ abstract class Kohana_SSO_Driver_OAuth_Yahoo extends SSO_Driver_OAuth {
 			'service_id'    => $user->guid,
 			'service_name'  => $user->nickname,
 			'realname'      => $realname ? $realname : $user->nickname,
-			'service_type'  => 'oauth.yahoo',
+			'service_type'  => 'OAuth.Yahoo',
 			'email'         => NULL,
 			'avatar'        => $user->image->imageUrl,
 		);

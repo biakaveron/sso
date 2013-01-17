@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OpenID_Google extends SSO_Driver_OpenID {
 
-	public $name = 'openid.google';
+	public $name = 'OpenID.Google';
 
 	protected function _get_user_data($user)
 	{

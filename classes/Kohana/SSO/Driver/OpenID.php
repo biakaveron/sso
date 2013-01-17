@@ -25,20 +25,21 @@ abstract class Kohana_SSO_Driver_OpenID extends SSO_Driver {
 
 	protected function _get_user_data($user)
 	{
+		$username = trim(str_replace('http://', '', $this->_identity), '/');
 		return array(
-			'service_id'    => $this->_identity,
-			'service_name'  => $this->_identity,
+			'service_id'    => $username,
+			'service_name'  => $username,
 			'realname'      => Arr::get($user, 'namePerson/friendly'),
 			'service_type'  => $this->name,
 			'email'         => Arr::get($user, 'contact/email'),
 		);
 	}
 
-	public $name = 'openid';
+	public $name = 'OpenID';
 
 	public function init()
 	{
-		$provider = $this->name == 'openid' ? NULL : str_replace('openid.', '', $this->name);
+		$provider = $this->name == 'OpenID' ? NULL : str_replace('OpenID.', '', $this->name);
 		$this->_openid = OpenID::factory($provider);
 	}
 

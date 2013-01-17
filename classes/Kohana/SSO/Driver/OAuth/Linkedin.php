@@ -2,7 +2,7 @@
 
 abstract class Kohana_SSO_Driver_OAuth_LinkedIn extends SSO_Driver_OAuth {
 
-	protected $_provider = 'linkedin';
+	protected $_provider = 'Linkedin';
 
 	protected function _url_verify_credentials(OAuth_Token_Access $token)
 	{
@@ -24,7 +24,7 @@ abstract class Kohana_SSO_Driver_OAuth_LinkedIn extends SSO_Driver_OAuth {
 			'service_id'    => $user['id'],
 			'service_name'  => $login,
 			'realname'      => $login,
-			'service_type'  => 'oauth.linkedin',
+			'service_type'  => 'OAuth.Linkedin',
 			'email'         => NULL,
 			'avatar'        => Arr::get($user, 'picture-url'),
 		);
