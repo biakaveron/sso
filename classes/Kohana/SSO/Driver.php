@@ -3,6 +3,15 @@
 abstract class Kohana_SSO_Driver {
 
 	protected $_provider = FALSE;
+
+	/**
+	 * Параметры для передачи провайдеру при получении токена
+	 *
+	 * @var array
+	 */
+	protected $_request_params = array();
+	protected $_login_params   = array();
+
 	/**
 	 * @var Auth
 	 */

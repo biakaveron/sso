@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-abstract class Kohana_SSO_Driver_OAuth_LinkedIn extends SSO_Driver_OAuth {
+abstract class Kohana_SSO_Driver_OAuth_Linkedin extends SSO_Driver_OAuth {
 
 	protected $_provider = 'Linkedin';
 
@@ -30,5 +30,7 @@ abstract class Kohana_SSO_Driver_OAuth_LinkedIn extends SSO_Driver_OAuth {
 		);
 
 	}
+
+	public $name = 'OAuth.Linkedin';
 
 }

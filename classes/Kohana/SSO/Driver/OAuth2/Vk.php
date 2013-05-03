@@ -39,4 +39,5 @@ abstract class Kohana_SSO_Driver_OAuth2_Vk extends SSO_Driver_OAuth2 {
 		);
 	}
 
+	public $name = 'OAuth2.Vk';
 }

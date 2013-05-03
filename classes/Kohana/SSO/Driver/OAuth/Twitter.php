@@ -29,4 +29,6 @@ abstract class Kohana_SSO_Driver_OAuth_Twitter extends SSO_Driver_OAuth {
 
 	}
 
+	public $name = 'OAuth.Twitter';
+
 }

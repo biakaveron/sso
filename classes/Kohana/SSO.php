@@ -100,7 +100,17 @@ abstract class Kohana_SSO {
 
 		$params = func_get_args();
 		$driver_name = array_shift($params);
-		$driver = $this->driver($driver_name);
+		// Можно передать имя драйвера или инстанс драйвера
+		if ($driver_name instanceof SSO_Driver)
+		{
+			$driver = $driver_name;
+			$driver_name = $driver->name;
+		}
+		else
+		{
+			$driver = $this->driver($driver_name);
+		}
+
 		if ($user = call_user_func_array(array($driver, 'login'), $params))
 		{
 			$this->_complete_login($user, $driver_name);

@@ -99,4 +99,23 @@ abstract class Kohana_SSO_Driver_OAuth2 extends SSO_Driver {
 		return $this->_auth->orm()->get_user($user);
 	}
 
+	/**
+	 * получение URL для авторизации
+	 */
+	public function authorize_url()
+	{
+		return $this->_provider->authorize_url($this->_consumer, $this->_request_params);
+	}
+
+	public function callback($callback)
+	{
+		$this->_consumer->callback($callback);
+		return $this;
+	}
+
+	public function access_token($code)
+	{
+		return $this->_provider->access_token($this->_consumer, $code);
+	}
+
 }

@@ -42,4 +42,5 @@ class Kohana_SSO_Driver_OAuth2_Yandex extends SSO_Driver_OAuth2 {
 		return 'https://api-yaru.yandex.ru/me/';
 	}
 
+	public $name = 'OAuth2.Yandex';
 }

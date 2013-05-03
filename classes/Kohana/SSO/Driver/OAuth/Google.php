@@ -1,5 +1,10 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Class Kohana_SSO_Driver_OAuth_Google
+ *
+ * @deprecated Используйте Kohana_SSO_Driver_OAuth2_Google
+ */
 abstract class Kohana_SSO_Driver_OAuth_Google extends SSO_Driver_OAuth {
 
 	protected $_provider = 'Google';
@@ -28,4 +33,5 @@ abstract class Kohana_SSO_Driver_OAuth_Google extends SSO_Driver_OAuth {
 
 	}
 
+	public $name = 'OAuth.Google';
 }

@@ -4,6 +4,15 @@ abstract class Kohana_SSO_Driver_OAuth2_Facebook extends SSO_Driver_OAuth2 {
 
 	protected $_provider = 'Facebook';
 
+	protected $_request_params = array(
+		'scope'   => 'email',
+	);
+
+	protected $_login_params = array(
+		'OAuth2.Facebook',
+		TRUE
+	);
+
 	/**
 	 * @param   string  $user object (response from provider)
 	 * @return  Array
@@ -32,5 +41,7 @@ abstract class Kohana_SSO_Driver_OAuth2_Facebook extends SSO_Driver_OAuth2 {
 	{
 		return 'https://graph.facebook.com/me';
 	}
+
+	public $name = 'OAuth2.Facebook';
 
 }

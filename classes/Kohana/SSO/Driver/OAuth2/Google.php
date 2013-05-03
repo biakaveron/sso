@@ -4,6 +4,10 @@ abstract class Kohana_SSO_Driver_Oauth2_Google extends SSO_Driver_OAuth2 {
 
 	protected $_provider = 'Google';
 
+	protected $_request_params = array(
+		'scope'   => 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+	);
+
 	/**
 	 * @param   string  $user object (response from provider)
 	 * @return  Array
@@ -26,4 +30,6 @@ abstract class Kohana_SSO_Driver_Oauth2_Google extends SSO_Driver_OAuth2 {
 	{
 		return 'https://www.googleapis.com/oauth2/v1/userinfo';
 	}
+
+	public $name = 'OAuth2.Google';
 }
